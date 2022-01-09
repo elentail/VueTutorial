@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="example">
+            <p>원본 메시지: "{{ message }}"</p>
+            <p>역순으로 표시한 메시지: "{{ reversedMessage }}"</p>
+
+            <div>{{ fullName }}</div>
+          </div>
+
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data: {
+              message: '안녕하세요',
+              firstName: 'GN',
+              lastName: 'Gil'
+            },
+            //computed 속성은 해당 속성이 종속된 대상이 변경될 때만 함수를 실행합니다. 
+            // 즉 message가 변경되지 않는 한, computed 속성인 
+            // reversedMessage를 여러 번 요청해도 계산을 다시 하지 않고 
+            // 계산되어 있던 결과를 즉시 반환합니다.
+            computed: {
+              // 계산된 getter
+              reversedMessage: function () {
+                // `this` 는 vm 인스턴스를 가리킵니다.
+                return this.message.split('').reverse().join('')
+              },
+              fullName: function(){
+                  return this.firstName + ' '+this.lastName
+              }
+            }
+          })
+    </script>
+</html>
