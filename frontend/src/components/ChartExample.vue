@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import { Chart, BarElement, BarController, LinearScale, CategoryScale } from 'chart.js';
-Chart.register(BarElement, BarController, LinearScale, CategoryScale);
+import { Chart } from 'chart.js'
 export default {
     methods: {
         fillData() {

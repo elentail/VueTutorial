@@ -44,6 +44,17 @@
             </ol>
         </div>
 
+        <div id="app-8">
+            <ul>
+                <do-item 
+                    v-for="item in groceryList" 
+                    v-bind:doit="item"
+                    v-bind:key="item.id"
+                >
+                </do-item>
+            </ul>
+        </div>
+
     </body>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -97,7 +108,7 @@
         Vue.component('todo-item', {
             props: ['todo'],
             template: '<li>{{ todo.text }}</li>'
-          })
+        })
           
           var app7 = new Vue({
             el: '#app-7',
@@ -108,6 +119,21 @@
                 { id: 2, text: 'Whatever else humans are supposed to eat' }
               ]
             }
-          })
+        })
+
+        Vue.component('do-item', {
+            props: ['doit'],
+            template: '<li>{{ doit.text }}</li>'
+        })          
+        var app8 = new Vue({
+            el: "#app-8",
+            data: {
+                groceryList: [
+                { id: 0, text: 'Vegetables' },
+                { id: 1, text: 'Cheese' },
+                { id: 2, text: 'Whatever else humans are supposed to eat' }
+              ]
+            }
+        })
     </script>
 </html>
