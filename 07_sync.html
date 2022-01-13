@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="app"> 
+            <p>{{ bar }}</p>
+            <input type="text" v-model="bar" />
+            <comp :foo.sync="bar"></comp>
+            <!-- 아래와 동일 -->
+            <!-- <comp :foo="bar" @update:foo="val => bar = val"></comp> -->
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('comp',{
+            template: 
+                '<div><h3>Child Component</h3><div>{{ foo }}</div>\
+                <div><button @click="changeParent">Update Me</button></div>',
+            props:{
+                foo: String
+            },
+            methods:{
+                changeParent: function(){
+                    console.log('from child')
+                    this.$emit('update:foo', 'fromChild')
+                }
+            }
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                bar : 'hello world'
+            },
+        })
+    </script>
+</html>

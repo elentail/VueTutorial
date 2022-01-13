@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="example">
+            <p>{{ total }}</p>
+            <!-- v-on:increment 자식에서 increment 를 호출 -->
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+            <button-counter @increment="incrementTotal"></button-counte>
+        </div>
+
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('button-counter',{
+            template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+            data: function(){
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                incrementCounter: function(){
+                    this.counter += 1
+                    // 부모로 event 전달
+                    this.$emit('increment')
+    
+                }
+            },
+        })
+        let vm = new Vue({
+            el: '#example',
+            data: {
+                total: 0
+            },
+            methods: {
+                incrementTotal: function(){
+                    this.total += 1
+                }
+            }
+        })
+    </script>
+
+</html>

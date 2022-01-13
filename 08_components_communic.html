@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="app"> 
+            <component-a></component-a>
+            <component-b></component-b>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var eventBus = new Vue()
+        Vue.component('component-a',{
+            template: 
+                '<div><h3>ComponentA</h3><button @click="sendMessage">emit</button></div>',
+            props:{
+                foo: String
+            },
+            methods:{
+                sendMessage: function(){
+                    console.log('clicked')
+                    this.eventBus.$emit('is-clicked', 1)
+                }
+            }
+        })
+        Vue.component('component-b',{
+            template: 
+                '<div><h3>ComponentB</h3>{{ eventData }}</div>',
+            data: function() {
+                return {
+                    eventData : 0
+                }
+            },
+            mounted() {
+                this.eventBus.$on('is-clicked', function(){
+                    this.eventData += 1
+                })
+            }
+        })
+        let vm = new Vue({
+            el: '#app',
+        })
+    </script>
+</html>
