@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <body>
+        <div id="app"></div>
+        
+        <h1>alert method</h1>
+        <button onclick="alertDialogBox()"> alert</button>
+
+        <h1>HTML DOM 요소 이용한 innerHTML </h1>
+        <p id="text">이 문장을 바꿀 것입니다.</p>
+
+        <h1>외부 자바스크립트 파일</h1>
+        <p id="date">오늘 날짜는</p>
+        <button onclick="printDate()">오늘 날짜</button>
+
+        <h1>명시적 타입 변환</h1>
+        <p id="result"></p>
+
+        <h1> void 함수 </h1>
+        <a href="javascript:void(0)">이 링크는 동작하지 않습니다.</a><br><br>
+        <a href="javascript:void(document.body.style.backgroundColor='yellow')">
+            이 링크도 동작하지 않지만, HTML 문서의 배경색을 바꿔줍니다.
+        </a>
+        
+        <script>
+            /**/
+            var x = 10;
+            document.getElementById("app").innerHTML = x;
+            function alertDialogBox(){
+                alert("확인창");
+            }
+            /**/
+            var str = document.getElementById("text");
+            str.innerHTML = "새로운 문장"
+            /**/
+            function printDate(){
+                var v1 = document.getElementById("date");
+                v1.innerHTML = "지금은 " + Date();
+            }
+            /**/ 
+            // 형 변환 전역 함수
+            // 1. Number()
+            // 2. String()
+            // 3. Boolean()
+            // 4. Object()
+            // 5. parseInt()
+            //6. parseFloat()
+
+            document.getElementById("result").innerHTML = Number("10") + "<br>";	// 10
+    		document.getElementById("result").innerHTML += String(true) + "<br>";	// "true"
+	    	document.getElementById("result").innerHTML += Boolean(0) + "<br>";		// false
+		    document.getElementById("result").innerHTML += Object(3);				// new Number(3)
+
+            /* Date 
+            설명
+            getDate()	날짜 중 일자를 숫자로 반환함. (1 ~ 31)
+            getDay()	날짜 중 요일을 숫자로 반환함. (일요일 : 0 ~ 토요일 : 6)
+            getFullYear()	날짜 중 연도를 4자리 숫자로 반환함. (yyyy년)
+            getMonth()	날짜 중 월을 숫자로 반환함. (1월 : 0 ~ 12월 : 11)
+            getTime()	1970년 1월 1일부터 현재까지의 시간을 밀리초(millisecond) 단위의 숫자로 반환함.
+            getHours()	시간 중 시를 숫자로 반환함. (0 ~ 23)
+            getMinutes()	시간 중 분을 숫자로 반환함. (0 ~ 59)
+            getSeconds()	시간 중 초를 숫자로 반환함. (0 ~ 59)
+            getMilliseconds()	시간 중 초를 밀리초(millisecond) 단위의 숫자로 반환함. (0 ~ 999)
+            */
+
+            /*
+            typeof "문자열"   // string
+            typeof 10         // number
+            typeof NaN        // number
+            typeof false      // boolean
+            typeof undefined  // undefined
+            typeof new Date() // object
+            typeof null       // object
+            */
+
+        </script>        
+    </body>
+
+</html>

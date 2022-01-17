@@ -4,11 +4,8 @@ from flask_cors import CORS
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
-
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
-app.debug = True
-
         
 def generator_stream():
     for i in range(50):
@@ -74,4 +71,4 @@ def chart2():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, threaded=True)
+    app.run(threaded=True)

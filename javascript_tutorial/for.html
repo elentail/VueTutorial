@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+
+            var obj = { name : "이순신", age : 20 };
+            for (var i in obj) {
+                document.write(i + "<br>");
+            }
+
+            var arr0 = [3, 4, 5];
+            for (var i = 0; i < arr0.length; i++) { // 배열 arr의 모든 요소의 인덱스(index)를 출력함.
+                document.write(i + " ");
+            }
+            for (var i in arr0) { // 위와 같은 동작을 하는 for / in 문
+                document.write(i + " ");
+            }
+
+            var arr1 = [3, 4, 5];
+            for (var i = 0; i < arr1.length; i++) { // 배열 arr의 모든 요소의 인덱스(index)를 출력함.
+                document.write(arr1[i] + " ");
+            }
+            for (var value of arr1) { // 위와 같은 동작을 하는 for / of 문
+                document.write(value + " ");
+            }
+
+            var arr2 = new Set([1, 1, 2, 2, 3, 3]);
+            for (var value of arr2) {
+                document.write(value + " ");
+            }
+        </script>
+    </body>
+</html>
+
