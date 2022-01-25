@@ -1,0 +1,115 @@
+*배열 생성 방법
+1. var arr = [배열요소1, 배열요소2,...];          // 배열 리터럴을 이용하는 방법
+2. var arr = Array(배열요소1, 배열요소2,...);     // Array 객체의 생성자를 이용하는 방법
+3. var arr = new Array(배열요소1, 배열요소2,...); // new 연산자를 이용한 Array 객체 생성 방법
+
+var arrLit = [1, true, "JavaScript"];             // 배열 리터럴을 이용하는 방법
+var arrObj = Array(1, true, "JavaScript");        // Array 객체의 생성자를 이용하는 방법
+var arrNewObj = new Array(1, true, "JavaScript"); // new 연산자를 이용한 Array 객체 생성 방법
+
+
+
+*배열 요소 추가
+1. arr.push(추가할 요소);         // push() 메소드를 이용하는 방법
+2. arr[arr.length] = 추가할 요소; // length 프로퍼티를 이용하는 방법
+3. arr[특정인덱스] = 추가할 요소; // 특정 인덱스를 지정하여 추가하는 방법
+
+var arr = [1, true, "Java"];
+arr.push("Script");           // push() 메소드를 이용하는 방법
+document.write(arr + "<br>"); // 1,true,Java,Script
+arr[arr.length] = 100;        // length 프로퍼티를 이용하는 방법
+document.write(arr + "<br>"); // 1,true,Java,Script,100
+arr[10] = "자바스크립트";     // 특정 인덱스를 지정하여 추가하는 방법
+document.write(arr + "<br>"); // 1,true,Java,Script,100,,,,,,자바스크립트
+document.write(arr[7]);       // undefined
+
+
+*Arracy constructor 프로퍼티
+문법
+function Array() {[native code]}
+
+
+function isArray(a) {
+
+    return a.constructor.toString().indexOf("Array") > -1;
+
+}
+
+
+var arr = [1, true, "JavaScript"];          // 배열 생성
+document.write(arr.constructor);            // constructor 프로퍼티의 값 출력
+document.write(arr.constructor.toString()); // function Array() {[native code]}
+document.write(arr.constructor.toString().indexOf("Array")); // 10
+document.write(isArray(arr))                // true
+
+*함수 내부에서 var 키워드를 사용하지 않고 변수를 선언하면, 해당 변수는 지역 변수가 아닌 전역 변수로 선언됩니다.
+
+var num = 10; // 전역 변수 num을 선언함.
+
+function globalNum() {
+    var num = 20; // 같은 이름의 지역 변수 num을 선언함.
+    document.write("함수 내부에서 지역 변수 num의 값은 " + num + "입니다.<br>");
+    document.write("함수 내부에서 전역 변수 num의 값은 " + window.num + "입니다.<br>");
+}
+globalNum(); // 함수 globalNum()을 호출함.
+
+
+*arguments 객체
+
+function addNum() {
+    var sum = 0;                                // 합을 저장할 변수 sum을 선언함.
+    for(var i = 0; i < arguments.length; i++) { // 전달받은 인수의 총 수만큼 반복함.
+        sum += arguments[i];                    // 전달받은 각각의 인수를 sum에 더함.
+    }
+    return sum;
+}
+
+addNum(1, 2, 3); // 6
+addNum(1, 2);    // 3
+addNum(1);       // 1
+addNum();        // 0
+addNum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10); // 55
+
+
+* 나머지 매개변수(rest parameter)
+
+function sub() {
+    var firstNum = arguments[0];                  // 첫 번째 인수에서
+    for(var i = 0; i < arguments.length-1; i++) { // 두 번째부터 마지막 인수까지를
+        firstNum -= arguments[i+1];               // 뺌.
+    }
+    return firstNum;
+}
+sub(10, 2, 3);    // 10 - 2 - 3 = 5
+sub(10, 1, 5, 8); // 10 - 1 - 5 - 8 = -4
+
+// 첫 번째 인수를 변수 firstNum에 저장하고 나머지 인수들은 배열 restArgs에 저장함.
+function sub(firstNum, ...restArgs) {
+    for(var i = 0; i < restArgs.length; i++) {
+        firstNum -= restArgs[i];
+    }
+    return firstNum;
+}
+sub(10, 2, 3);    // 10 - 2 - 3 = 5
+sub(10, 1, 5, 8); // 10 - 1 - 5 - 8 = -4
+
+
+* 미리 정의된 전역 함수(predefined functions)
+자바스크립트는 사용자의 편의를 위해 다양한 기능의 여러 전역 함수를 미리 정의하여 제공합니다.
+이러한 전역 함수는 자바스크립트의 어떤 타입의 객체에서도 바로 사용할 수 있습니다.
+자바스크립트에서 미리 정의되어 있는 전역 함수
+
+
+1. eval()
+2. isFinite()
+3. isNaN()
+4. parseFloat()
+5. parseInt()
+6. decodeURI()
+7. decodeURIComponent()
+8. encodeURI()
+9. encodeURIComponent()
+10. escape()
+11. unescape()
+12. Number()
+13. String()

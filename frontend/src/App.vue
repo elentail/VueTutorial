@@ -5,10 +5,16 @@
         <div class="col-6"><code-viewer :content="tf_code" :title="'Tensorflow'" /></div>
         <div class="col-6"><code-viewer :content="torch_code" :title="'Pytorch'" /></div>
       </div>
-      <div class="row">
-          <button type="button" class="btn btn-success btn-sm"  v-on:click="getStream">trainning</button>
+
+    <hello-table />
+
+
+      <div class="row m-5">
+        <button type="button" class="btn btn-info btn-sm"  v-on:click="getStream">trainning</button>
+
+        <chart-container ref="childComponentRef"/>
       </div>
-      <div class="row"><chart-container ref="childComponentRef"/></div>
+      
     </div>
   </div>
 </template>
@@ -17,12 +23,14 @@
 
 import CodeViewer from "./components/CodeViewer.vue";
 import ChartContainer from "./components/ChartContainer.vue"
+import HelloTable from "./components/HelloTable.vue"
 
 export default {
   name: 'App',
   components: {
     CodeViewer,
-    ChartContainer
+    ChartContainer,
+    HelloTable
   },
   data(){
     return {
