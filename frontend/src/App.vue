@@ -6,10 +6,10 @@
         <div class="col-6"><code-viewer :content="torch_code" :title="'Pytorch'" /></div>
       </div>
 
-    <hello-table />
+    
+      <hello-table />
 
-
-      <div class="row m-5">
+      <div class="row mt-5 p-2">
         <button type="button" class="btn btn-info btn-sm"  v-on:click="getStream">trainning</button>
 
         <chart-container ref="childComponentRef"/>
@@ -62,6 +62,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 </style>
